@@ -1,60 +1,62 @@
-
-
-
 body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-color: rgba(164, 189, 201, 0.645);
 }
 
-/* Container for map and network graph */
 #container {
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    height: 80vh; 
 }
 
-/* Network graph container */
-#networkGraph {
-    width: 50%;
-    height: 600px;
-    display: inline-block;
-    vertical-align: top;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+#map, #barChart {
+    flex: 1;
+    height: 600px; 
 }
 
-
-/* Container for the map */
 #map {
     width: 50%;
-    background-color: #b0e0e6;
-    border: 1px solid #ccc;
-    margin-top: 20px;
 }
 
-/* Dropdown styling */
+#barChart {
+    width: 50%;
+}
+
 #stateSelect {
     display: block;
     width: 200px;
     padding: 10px;
     margin: 20px auto;
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    color: #111114;
+    background: linear-gradient(135deg, #f7b16b 0%, #f0e960 100%);
+    border: 1px solid #eca529;
+    border-radius: 25px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
 }
 
-/* SVG paths styling */
-.state {
-    stroke: #000;
-    fill: #cfcd99;
-    transition: fill 0.3s;
+#stateSelect:hover {
+    background: linear-gradient(135deg, #fdf185 0%, #f6ba65 100%);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
 }
 
-.state:hover {
-    fill: orange;
+#stateSelect:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Tooltip styling */
+
 .tooltip {
     position: absolute;
     text-align: center;
@@ -69,7 +71,6 @@ body, html {
     z-index: 10;
 }
 
-/* Tooltip arrow */
 .tooltip::after {
     content: "";
     position: absolute;
@@ -81,7 +82,6 @@ body, html {
     border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
 }
 
-/* Title styling */
 .title {
     margin-top: 20px;
     font-size: 32px;
@@ -89,26 +89,85 @@ body, html {
     font-family: 'Roboto', sans-serif;
     text-align: center;
 }
- 
 
-/* Container for the cat and dog images and the bar chart */
-#chartContainer {
+.buttons-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+    gap: 10px;
 }
 
-/* Styling for cat and dog images */
-#catImage, #dogImage {
-    width: 100px;
-    margin: 10px;
+.icon-button {
+    width: 50px;
+    height: 50px;
     cursor: pointer;
 }
 
-/* Styling for the bar chart */
-#barChart {
-    width: 800px;
-    height: 500px;
-    margin-top: px;
+.map-title {
+    text-align: middle;
+    font-size: 16px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+    text-anchor: middle;
+}
+
+#mapTitle {
+    position: absolute;
+    top: 150px;
+    left: 400px;
+    transform: translateX(-50%);
+    text-align: center;
+    margin: 0;
+}
+
+.table-container {
+    position: absolute;
+    top: 42px; 
+    right: 80px; 
+    text-align: center;
+    font-weight: bold;
+}
+
+.table-container table {
+    border-collapse: collapse;
+}
+
+.table-container td {
+    padding: 10px 20px;
+    border: 1px solid #151311;
+}
+
+.table-container td:first-child {
+    cursor: pointer;
+    color: rgb(239, 134, 53);
+}
+
+.animated-text {
+    animation: bounceText 2s infinite;
+}
+
+.animated-arrow {
+    animation: moveArrow 1s infinite alternate;
+    font-size: 2em;
+}
+
+@keyframes bounceText {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes moveArrow {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(10px);
+    }
 }
